@@ -1,22 +1,32 @@
-# requirements.txt — dependencias mínimas para usar optimamente el Visualizador Molecular
-# Fija NumPy en la serie 1.x para que RDKit funcione
-numpy<2
+# requirements.txt - Dependencias para deployment en Fly.io
 
-Flask>=2.0
-Flask-SocketIO>=5.0
-python-socketio>=5.0
-python-engineio>=4.0
+# ===== CORE FRAMEWORK =====
+Flask==2.3.3
+Flask-SocketIO==5.3.6
 
-# Requerido para Gunicorn + SocketIO en producción
-eventlet>=0.33.0
-gunicorn>=20.0.0
+# ===== QUÍMICA COMPUTACIONAL =====
+# Usar rdkit-pypi para mejor compatibilidad en Linux
+rdkit-pypi==2022.9.5
 
-opencv-python>=4.5
-mediapipe>=0.8
-Pillow>=8.0
+# ===== COMPUTER VISION =====
+opencv-python-headless==4.8.1.78
+mediapipe==0.10.7
 
-# RDKit debe venir después de la línea numpy<2
-rdkit-pypi>=2021.9.2
+# ===== PROCESAMIENTO =====
+numpy==1.24.4
+Pillow==10.0.1
 
-requests>=2.28
+# ===== HTTP CLIENT =====
+requests==2.31.0
 
+# ===== SERVIDOR WSGI =====
+gunicorn==21.2.0
+eventlet==0.33.3
+
+# ===== UTILIDADES =====
+python-dotenv==1.0.0
+
+# ===== COMPATIBILIDAD LINUX =====
+# Estas dependencias pueden ser necesarias según el sistema
+setuptools>=65.0.0
+wheel>=0.40.0
