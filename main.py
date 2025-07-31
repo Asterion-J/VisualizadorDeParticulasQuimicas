@@ -1500,55 +1500,6 @@ def favicon():
     return '', 204
 
 if __name__ == '__main__':
-    print("🧪 Iniciando visualizador molecular con RDKit + Gemini AI...")
-    print("=" * 60)
-    
-    # Verificar RDKit
-    if not RDKIT_AVAILABLE:
-        print("❌ RDKit no está disponible. Por favor instálalo:")
-        print("   OPCIÓN 1: pip install rdkit")
-        print("   OPCIÓN 2: conda install -c conda-forge rdkit")
-        print("   OPCIÓN 3: pip install rdkit-pypi")
-        print("")
-    else:
-        print("✅ RDKit disponible")
-        print("📋 Moléculas predefinidas disponibles:")
-        for key, mol in MOLECULAS_PREDEFINIDAS.items():
-            print(f"   - {key}: {mol['nombre']}")
-        print("")
-    
-    # Verificar Gemini
-    if GEMINI_API_KEY and GEMINI_API_KEY != "TU_API_KEY_AQUI":
-        print("✅ Gemini AI configurado")
-        print("🤖 Modelos disponibles:")
-        for model in GEMINI_MODELS.keys():
-            print(f"   - {model}")
-        print("")
-    else:
-        print("⚠️ Gemini AI no configurado (API Key faltante)")
-        print("   Configura GEMINI_API_KEY en el código")
-        print("")
-    
-    # Verificar cámara
-    cap_test = cv2.VideoCapture(0)
-    if cap_test.isOpened():
-        print("✅ Cámara disponible")
-        cap_test.release()
-    else:
-        print("⚠️ Cámara no detectada - el sistema funcionará sin gestos")
-    
-    print("=" * 60)
-    print("🌐 Servidor iniciando en http://localhost:5000")
-    print("🔬 Endpoint de prueba RDKit: http://localhost:5000/test")
-    print("🤖 Endpoint de prueba Gemini: http://localhost:5000/test_gemini")
-    print("📹 Stream de cámara: http://localhost:5000/camara")
-    print("🎨 Modo por defecto: Vista 3D")
-    print("")
-    print("🔥 NUEVAS FUNCIONALIDADES GEMINI:")
-    print("   📊 Análisis molecular: POST /api/gemini/analyze_molecule")
-    print("   🔗 Análisis interacción: POST /api/gemini/analyze_interaction")
-    print("   👋 Sugerencias gestuales: POST /api/gemini/gesture_suggestions")
-    print("   ⚙️  Configurar modelo: POST /api/gemini/set_model")
-    print("=" * 60)
-    
-    socketio.run(app, debug=False, host='0.0.0.0', port=8080)
+    print("🧪 Ejecutando servidor Flask directamente (modo desarrollo)")
+    socketio.run(app, host='0.0.0.0', port=8080)
+
