@@ -52,4 +52,5 @@ RUN chmod +x main.py
 EXPOSE 8080
 
 # Comando de inicio
-CMD ["python", "main.py"]
+CMD ["gunicorn", "-k", "eventlet", "-w", "1", "-b", "0.0.0.0:8080", "main:app"]
+
