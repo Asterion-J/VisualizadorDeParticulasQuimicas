@@ -12,20 +12,21 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV FLASK_APP=main.py
 ENV FLASK_ENV=production
 
-# Instalar dependencias del sistema
+# Instalar dependencias del sistema (CORREGIDAS)
 RUN apt-get update && apt-get install -y \
-    # Para OpenCV
+    # Para OpenCV (esenciales)
     libglib2.0-0 \
     libsm6 \
     libxext6 \
     libxrender-dev \
     libgomp1 \
-    libglib2.0-0 \
-    # Para MediaPipe
-    libgoogle-glog0v5 \
+    # Para algunas operaciones de RDKit
+    libxss1 \
+    libgconf-2-4 \
     # Utilidades generales
     wget \
     curl \
+    # Limpieza
     && rm -rf /var/lib/apt/lists/*
 
 # Crear directorio de trabajo
@@ -35,6 +36,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Instalar dependencias Python
+RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar el resto del código
