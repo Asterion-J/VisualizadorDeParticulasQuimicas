@@ -1,17 +1,14 @@
-# fly.toml - Configuración para deployment en Fly.io
+# fly.toml - Configuración corregida para Fly.io
 
-app = "molecular-viewer-app"  # Cambia por tu nombre de app
-primary_region = "mia"        # O la región que prefieras (mia, ord, lax, etc.)
+app = "VisualizadorDeParticulasQuimicas"  # Cambia por tu nombre de app
+primary_region = "mia"        # O la región que prefieras
 
 [build]
-  # Usar Dockerfile para el build
   dockerfile = "Dockerfile"
 
 [env]
-  # Variables de entorno de producción
   FLASK_ENV = "production"
   PYTHONUNBUFFERED = "1"
-  # Configuración para cámara en servidor (no funcional en cloud)
   CAMERA_ENABLED = "false"
 
 [http_service]
@@ -21,20 +18,7 @@ primary_region = "mia"        # O la región que prefieras (mia, ord, lax, etc.)
   auto_start_machines = true
   min_machines_running = 0
 
-  # Configuración de health checks
-  [http_service.checks]
-    [http_service.checks.alive]
-      type = "http"
-      interval = 30000
-      timeout = 2000
-      grace_period = "10s"
-      method = "GET"
-      path = "/test"
-      protocol = "http"
-      tls_skip_verify = false
-
 [[vm]]
-  # Configuración de recursos
   cpu_kind = "shared"
   cpus = 1
   memory_mb = 1024
