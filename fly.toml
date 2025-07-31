@@ -1,7 +1,7 @@
 # fly.toml - Configuración corregida para Fly.io
 
-app = "VisualizadorDeParticulasQuimicas"  # Cambia por tu nombre de app
-primary_region = "mia"        # O la región que prefieras
+app = "molecular-viewer-app"  # ✅ NOMBRE VÁLIDO
+primary_region = "ord"        # Chicago (buena elección)
 
 [build]
   dockerfile = "Dockerfile"
